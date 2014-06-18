@@ -28,6 +28,8 @@ class MultiProcessingLog(SysLogHandler):
 		while True:
 			try:
 				record = self.queue.get()
+				if record is None:
+					raise EOFError
 				SysLogHandler.emit(self, record)
 			except (KeyboardInterrupt, SystemExit):
 				raise
@@ -61,3 +63,8 @@ class MultiProcessingLog(SysLogHandler):
 			raise
 		except:
 			self.handleError(record)
+
+	def close(self):
+		"""Close the loggers"""
+		self.queue.put(None)
+		SysLogHandler.close(self)
