@@ -27,13 +27,13 @@ except ImportError:
 	from distutils.core import setup
 
 
-setup(name = 'mpSysLogHandler',
+setup(name = 'mpSyslogHandler',
 	version = '0.1',
 	description = 'MultiProcess-safe SysLog Handler',
 	author = 'Chris Moyer',
 	author_email = 'cmoyer@newstex.com',
 	url = 'https://github.com/cmoyer/mpSysLogHandler/',
-	packages = ['mpSysLogHandler'],
+	packages = ['mpSyslogHandler'],
 	license = 'MIT',
 	platforms = 'Posix; MacOS X; Windows',
 	classifiers = ['Development Status :: 3 - Alpha',
