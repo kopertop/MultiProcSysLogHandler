@@ -8,7 +8,7 @@ very well, this overrides the Syslog handler and makes sure
 the emit function is called properly
 
 """
-__version__ = '0.1.1'
+__version__ = '0.1.2'
 
 from logging.handlers import SysLogHandler
 import multiprocessing, threading, sys, traceback, socket
@@ -85,4 +85,4 @@ class MultiProcessingLog(SysLogHandler):
 	def close(self):
 		"""Close the loggers"""
 		self.queue.put(None)
-		self.close()
+		SysLogHandler.close(self)
