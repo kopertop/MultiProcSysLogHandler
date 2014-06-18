@@ -85,4 +85,4 @@ class MultiProcessingLog(SysLogHandler):
 	def close(self):
 		"""Close the loggers"""
 		self.queue.put(None)
-		self.close()
+		SysLogHandler.close(self)
