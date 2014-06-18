@@ -8,8 +8,10 @@ very well, this overrides the Syslog handler and makes sure
 the emit function is called properly
 
 """
+__version__ = '0.1.0'
+
 from logging.handlers import SysLogHandler
-import multiprocessing, threading, sys, traceback, logging, socket
+import multiprocessing, threading, sys, traceback, socket
 
 class MultiProcessingLog(SysLogHandler):
 	"""A special SysLog MultiProcessing handler, which
@@ -30,6 +32,10 @@ class MultiProcessingLog(SysLogHandler):
 				record = self.queue.get()
 				if record is None:
 					raise EOFError
+				# This is taken directly from the SysLog Handler, but for some reason
+				# when you call emit() from here instead of doing it in this function,
+				# the resulting Syslog lines are still incorrect and contain <level>
+				# in the output
 				msg = self.format(record) + '\000'
 				prio = '<%d>' % self.encodePriority(self.facility, self.mapPriority(record.levelname))
 				# Message is a string. Convert to bytes as required by RFC 5424

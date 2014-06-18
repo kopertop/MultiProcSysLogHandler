@@ -26,9 +26,10 @@ try:
 except ImportError:
 	from distutils.core import setup
 
+from mpSyslogHandler import __version__
 
 setup(name = 'mpSyslogHandler',
-	version = '0.1',
+	version = __version__,
 	description = 'MultiProcess-safe SysLog Handler',
 	author = 'Chris Moyer',
 	author_email = 'cmoyer@newstex.com',
