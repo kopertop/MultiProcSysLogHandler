@@ -8,7 +8,7 @@ very well, this overrides the Syslog handler and makes sure
 the emit function is called properly
 
 """
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 from logging.handlers import SysLogHandler
 import multiprocessing, threading, sys, traceback, socket
